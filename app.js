@@ -11,8 +11,6 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 let team = [];
-let checkManager = false;
-
 
 getInfo()
 
@@ -42,20 +40,20 @@ function getInfo() {
         {
             type: "input",
             name: "school",
-            message: "Name of employee's school:",
-            when: (answers) => { return (answers.role === "Intern") }
+            message: "Name of intern's school:",
+            when: (answers) => { return answers.role === "Intern" }
         },
         {
             type: "input",
             name: "github",
-            message: "Employee's GitHub username:",
-            when: (answers) => { return (answers.role === "Engineer") }
+            message: "Engineer's GitHub username:",
+            when: (answers) => { return answers.role === "Engineer" }
         },
         {
             type: "input",
             name: "officeNumber",
             message: "Manager's office number:",
-            when: (answers) => { return (answers.role === "Manager") }
+            when: (answers) => { return answers.role === "Manager" }
         },
         {
             type: "confirm",
@@ -67,17 +65,14 @@ function getInfo() {
         const newEmployee = createObjFromClass(answers)
         team.push(newEmployee);
 
-        if (answers.role === "Manager") checkManager = true;
-
         // Handle add'l employees
         if (answers.newEmployee) getInfo();
         else {
-            // Check for manager & output team
-            (!checkManager) ? (
-                console.log("ERROR: Team must include a manager! Please add one now."),
-                getInfo()
-            ) : (console.log(team),
-                render(team));
+            // If team has manager, render html
+            const managers = team.filter(obj => { return obj.getRole() === "Manager" });
+            managers[0] ? (console.log(team), render(team))
+                : (console.log("ERROR: Team must include a manager! Please add one now."),
+                    getInfo());
             // After the user has input all employees desired, call the `render` function (required
             // above) and pass in an array containing all employee objects; the `render` function will
             // generate and return a block of HTML including templated divs for each employee!
