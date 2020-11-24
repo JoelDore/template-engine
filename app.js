@@ -13,6 +13,9 @@ const render = require("./lib/htmlRenderer");
 let team = [];
 let checkManager = false;
 
+
+getInfo()
+
 function getInfo() {
     inquirer.prompt([
         {
@@ -60,10 +63,12 @@ function getInfo() {
             message: "Add another employee?"
         }
     ]).then((answers) => {
+        // Add employee to team
+        const newEmployee = createObjFromClass(answers)
+        team.push(newEmployee);
 
         if (answers.role === "Manager") checkManager = true;
-        // Add employee to team
-        team.push(answers);
+
         // Handle add'l employees
         if (answers.newEmployee) getInfo();
         else {
@@ -71,13 +76,25 @@ function getInfo() {
             (!checkManager) ? (
                 console.log("ERROR: Team must include a manager! Please add one now."),
                 getInfo()
-            ) : console.log(team)
-
+            ) : (console.log(team),
+                render(team));
             // After the user has input all employees desired, call the `render` function (required
             // above) and pass in an array containing all employee objects; the `render` function will
             // generate and return a block of HTML including templated divs for each employee!
         }
     })
+}
+
+function createObjFromClass(obj) {
+    let newEmployee;
+    if (obj.role === "Manager") {
+        newEmployee = new Manager(obj.name, obj.id, obj.email, obj.officeNumber)
+    } else if (obj.role === "Engineer") {
+        newEmployee = new Engineer(obj.name, obj.id, obj.email, obj.github)
+    } else if (obj.role === "Intern") {
+        newEmployee = new Intern(obj.name, obj.id, obj.email, obj.school)
+    }
+    return newEmployee;
 }
 
 // After you have your html, you're now ready to create an HTML file using the HTML
