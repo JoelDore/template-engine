@@ -62,18 +62,17 @@ function getInfo() {
     ]).then((answers) => {
 
         if (answers.role === "Manager") checkManager = true;
+        // Add employee to team
+        team.push(answers);
+        // Handle add'l employees
+        if (answers.newEmployee) getInfo();
+        else {
+            // Check for manager & output team
+            (!checkManager) ? (
+                console.log("ERROR: Team must include a manager! Please add one now."),
+                getInfo()
+            ) : console.log(team)
 
-        if (answers.newEmployee) { // Add another employee
-            delete answers.newEmployee;
-            team.push(answers);
-            getInfo();
-        } else if (!checkManager) { // Require a Manager
-            console.log("ERROR: Team must include a manager! Please add one now.");
-            delete answers.newEmployee;
-            team.push(answers);
-            getInfo();
-        } else {
-            console.log(team);
             // After the user has input all employees desired, call the `render` function (required
             // above) and pass in an array containing all employee objects; the `render` function will
             // generate and return a block of HTML including templated divs for each employee!
