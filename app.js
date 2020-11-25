@@ -68,14 +68,15 @@ function getInfo() {
         // Handle add'l employees
         if (answers.newEmployee) getInfo();
         else {
-            // If team has manager, render html
+            // If team has manager, render html & write file
             const managers = team.filter(obj => { return obj.getRole() === "Manager" });
-            managers[0] ? (console.log(team), render(team))
-                : (console.log("ERROR: Team must include a manager! Please add one now."),
-                    getInfo());
-            // After the user has input all employees desired, call the `render` function (required
-            // above) and pass in an array containing all employee objects; the `render` function will
-            // generate and return a block of HTML including templated divs for each employee!
+            if (managers[0]) {
+                const teamHTML = render(team);
+                fs.writeFile(outputPath, teamHTML, (err) => { if (err) throw err })
+            } else {
+                console.log("ERROR: Team must include a manager! Please add one now.");
+                getInfo()
+            };
         }
     })
 }
@@ -91,9 +92,3 @@ function createObjFromClass(obj) {
     }
     return newEmployee;
 }
-
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above to target this location.
-// HINT: you may need to check if the `output` folder exists and create it if it
-// does not.
