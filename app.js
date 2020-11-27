@@ -72,9 +72,12 @@ function getInfo() {
             const managers = team.filter(obj => { return obj.getRole() === "Manager" });
             if (managers[0]) {
                 const teamHTML = render(team);
-                fs.writeFile(outputPath, teamHTML, (err) => { if (err) throw err })
+                fs.writeFile(outputPath, teamHTML, (err) => {
+                    if (err) throw err;
+                    else console.log("Success! Your team page has been generated as `team.html`")
+                })
             } else {
-                console.log("ERROR: Team must include a manager! Please add one now.");
+                console.log("\n", "* * * ERROR: Team must include a manager! Please add one now. * * *", "\n");
                 getInfo()
             };
         }
