@@ -32,13 +32,14 @@ Requires the npm Inquirer package:
 1. Run `node index` in terminal  
 2. Navigate through prompts to build a new team
 3. A file named `team.html` will be generated in the output directory  
-<!-- ![Sample output](./Assets/demo-output.png) -->
 
 **Sample output (desktop):**
-<img src='./Assets/demo-output.png' alt="Sample-output">
 
-**Sample output (mobile):**  
-<img src='./Assets/demo-output-mobile.png' width="30%" alt="Sample-output-mobile">
+<img src='./assets/demo-output.png' alt="Sample-output">
+
+**Sample output (mobile):**
+
+<img src='./assets/demo-output-mobile.png' width="30%" alt="Sample-output-mobile">
 
 ## Contributing  
 
