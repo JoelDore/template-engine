@@ -7,7 +7,7 @@
 <img src='https://img.shields.io/github/last-commit/joeldore/template-engine'>
 </div>
 
-## _(description)_
+## _Command line application that generates a _
 <br>
 
 ## Table of Contents  
@@ -16,20 +16,29 @@
 * [Usage](#Usage)  
 * [Contributing](#Contributing)  
 * [Tests](#Tests)  
-* [Reflection](#Reflection)  
-* [Future Development](#Future-Development)  
+* [Future Development](#Future-Dev)  
 * [Questions](#Questions)
 * [License](#<img-src="https://icon-library.com/images/license-icon/license-icon-17.jpg"-width="28">-License)
 
 ## Installation  
 
-Requires the npm Inquirer package:  `npm install inquirer`
+Requires the npm Inquirer package: 
+`npm install inquirer`
 
 ## Usage  
 
-<!-- -> **[Walkthrough Video](#)** <-- -->
+-> **[Walkthrough Video](https://drive.google.com/file/d/1MCFim7h_pMClzwcIA7d5ReVawyy3vJhD/view)** <--
 
-Run `node app` in terminal  
+1. Run `node index` in terminal  
+2. Navigate through prompts to build a new team
+3. A file named `team.html` will be generated in the output directory  
+<!-- ![Sample output](./Assets/demo-output.png) -->
+
+**Sample output (desktop):**
+<img src='./Assets/demo-output.png' alt="Sample-output">
+
+**Sample output (mobile):**  
+<img src='./Assets/demo-output-mobile.png' width="30%" alt="Sample-output-mobile">
 
 ## Contributing  
 
@@ -41,14 +50,12 @@ Contributions welcome!
 
 ## Tests
 
+Requires npm jest package to run tests: 
+`npm run test`
 
-## Reflection
+## Future Dev
 
-- 
-
-## Future Development
-
-- 
+Validate user input to ensure proper format/no blank entries (name, email, id#).
 
 ## Questions  
 Feel free to send me an email at dore.joel.dore@gmail.com!  
