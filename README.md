@@ -18,7 +18,7 @@
 * [Tests](#Tests)  
 * [Future Development](#Future-Dev)  
 * [Questions](#Questions)
-* [License](#<img-src="https://icon-library.com/images/license-icon/license-icon-17.jpg"-width="28">-License)
+* [License](#License)
 
 ## Installation  
 
@@ -61,7 +61,7 @@ Validate user input to ensure proper format/no blank entries (name, email, id#).
 ## Questions  
 Feel free to send me an email at dore.joel.dore@gmail.com!  
 
-## <img src="https://icon-library.com/images/license-icon/license-icon-17.jpg" width="28"> License
+## License
 This project is [Apache](https://github.com/JoelDore/template-engine/blob/main/LICENSE) licensed.  
 © 2020 [Joel Dore](https://github.com/JoelDore)  
 
